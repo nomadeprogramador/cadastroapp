@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'contato_list' %}">My Site</a>
+      <a class="navbar-brand" href='#'>My Site</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -8,17 +8,17 @@
         <ul class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <form method="post" action="{% url 'logout' %}" class="d-flex">
+              <form method="post" action="#" class="d-flex">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-outline-light">Logout</button>
               </form>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
+              <a class="nav-link" href="#">Register</a>
             </li>
           {% endif %}
         </ul>
