@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap%}
+{% block content %}
+<div>
+    <div>
+        <div class="col-md-8 my-2">
+            <h3 class="fs-2"> Editar  contato {{contato.nome}} </h3>
+            <form action="#" method="post">
+                {% csrf_token %}
+                {{form|bootstrap}}
+
+                <button class="btn btn-primary mt-3" type="submit"> Editar Contato </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

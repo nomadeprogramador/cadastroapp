@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %}Login Cadastro Web{% endblock %}
+
+{% block content %}
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      
+      <!-- Imagem ilustrativa -->
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
+      </div>
+      
+      <!-- Formulário de Login -->
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <h2 class="text-center mb-4 mt-4">Login Cadastro Web</h2>
+        
+        <form method="post">
+          {% csrf_token %}
+
+          <!-- Iterando pelos campos do formulário -->
+          {% for field in form.visible_fields %}
+            <div class="form-outline mb-4">
+              {{ field|bootstrap }}
+            </div>
+          {% endfor %}
+          
+          <!-- Lembre-se de mim -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+              <input class="form-check-input me-2" type="checkbox" id="rememberMe" />
+              <label class="form-check-label" for="rememberMe">Lembre-se de mim</label>
+            </div>
+            <a href="#" class="text-body">Esqueceu a senha?</a>
+          </div>
+
+          <!-- Botões -->
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Entrar</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">
+              Não tem uma conta? <a href="{% url 'register' %}" class="link-danger">Cadastre-se</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="bg-primary text-white text-center py-3 fixed-bottom">
+    <div class="container">
+      &copy; 2024. Todos os direitos reservados.
+    </div>
+  </footer>
+</section>
+{% endblock %}

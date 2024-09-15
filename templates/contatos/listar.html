@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="mt-5 mb-4">Lista de Contatos</h2>
+    <a href="{% url 'adicionar_contato' %}" class="btn btn-primary mb-3">Adicionar Contato</a>
+    <div class="table-responsive"> 
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contato in contatos %}
+                <tr>
+                    <td>{{ contato.nome }}</td>
+                    <td>{{ contato.email }}</td>
+                    <td>{{ contato.telefone }}</td>
+                    <td>{{ contato.categoria }}</td>
+                    <td>{{ contato.ps }}</td>
+                    <td>
+                        <a href="{% url 'editar_contato' contato.id %}" class="text-primary">
+                            <i class="bi bi-pencil-square fs-4"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'excluir_contato' contato.id %}" class="text-danger" onclick="return confirm('Tem certeza que deseja excluir este contato?');">
+                            <i class="bi bi-trash fs-4 "></i>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">Nenhum contato foi encontrado</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
